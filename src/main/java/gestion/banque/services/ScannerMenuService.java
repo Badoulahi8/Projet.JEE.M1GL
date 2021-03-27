@@ -1,5 +1,7 @@
 package gestion.banque.services;
 
+import gestion.banque.domain.Employe;
+
 import java.util.Scanner;
 
 public class ScannerMenuService implements MenuService {

@@ -1,5 +1,7 @@
 package gestion.banque.services;
 
+import gestion.banque.domain.Employe;
+
 public interface MenuService {
     public void afficherBienvenu();
     public void afficherMenuPricipal();

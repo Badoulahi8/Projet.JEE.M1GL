@@ -4,16 +4,20 @@ import gestion.banque.domain.Client;
 import gestion.banque.domain.Employe;
 import gestion.banque.repository.ClientRepository;
 import gestion.banque.repository.CompteRepository;
+import gestion.banque.repository.EmployeRepository;
 import gestion.banque.repository.jdbc.JdbcBasedClientRepository;
 import gestion.banque.repository.jdbc.JdbcBasedCompteRepository;
+import gestion.banque.repository.jdbc.JdbcBasedEmployeRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class ConsoleDisplayEmploye implements DisplayEmploye {
     private ClientRepository clientRepository ;
-    private CompteRepository compteRepository ;
+    private EmployeRepository employeRepository ;
     DisplayCompte displayCompte ;
+    private Scanner scanner = new Scanner(System.in);
     @Override
     public void listerInfos() {
         clientRepository = new JdbcBasedClientRepository();
@@ -30,7 +34,6 @@ public class ConsoleDisplayEmploye implements DisplayEmploye {
     public void infoClient() {
         displayCompte = new ConsoleDisplayCompte();
         clientRepository = new JdbcBasedClientRepository();
-        compteRepository = new JdbcBasedCompteRepository();
         System.out.println("Methode info");
         String numero= "";
         do {
@@ -46,7 +49,28 @@ public class ConsoleDisplayEmploye implements DisplayEmploye {
     }
 
     @Override
-    public Employe saisieEmploye() {
-        return null;
+    public String saisielogin() {
+        String login = "";
+        do {
+            System.out.println("Saisir votre login");
+            login = scanner.next();
+        }while(login.equals(""));
+        return login;
+    }
+
+    @Override
+    public String saisiePassword() {
+        String password = "";
+        do {
+            System.out.println("Saisir votre mot de password");
+            password = scanner.next();
+        }while(password.equals(""));
+        return password;
+    }
+
+    @Override
+    public Employe connexion() {
+        employeRepository = new JdbcBasedEmployeRepository();
+        return employeRepository.connection(saisielogin(),saisiePassword());
     }
 }

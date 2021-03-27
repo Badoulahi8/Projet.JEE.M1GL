@@ -26,7 +26,6 @@ public class JdbcBasedCompteRepository implements CompteRepository {
     DateFormat format1 = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
     Date date = new Date();
     Date date1 = new Date();
-    private int ok = 0 ;
     private Compte cmp ;
     private Operation op ;
 
@@ -45,12 +44,12 @@ public class JdbcBasedCompteRepository implements CompteRepository {
             statement.setDouble(2, 0.0);
             statement.setString(3, format.format(date));
             statement.setString(4, cli.getNumeroClient());
-            ok = statement.executeUpdate();
+            return statement.executeUpdate();
         }
         catch (Exception ex){
             ex.printStackTrace();
+            return 0;
         }
-        return ok ;
     }
 
     @Override
@@ -150,7 +149,7 @@ public class JdbcBasedCompteRepository implements CompteRepository {
             int okk = operationRepository.addOperation(op);
             if(ok != 0 && okk !=0)
             {
-                System.out.println("Operaton de retraite reusiie");
+                System.out.println("Operaton de retraite reusie");
             }
             else
             {

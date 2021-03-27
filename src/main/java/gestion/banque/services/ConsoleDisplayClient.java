@@ -16,7 +16,6 @@ public class ConsoleDisplayClient implements DisplayClient {
     private ClientRepository clientRepository ;
     private CompteRepository compteRepository ;
     private DisplayCompte displayCompte;
-    private String rep = "" ;
 
     @Override
     public Client saisieClient() {

@@ -10,7 +10,6 @@ import java.util.List;
 
 public class JdbcBasedClientRepository implements ClientRepository {
     ClientRepository clientRepository;
-    private int ok = 0 ;
     private Client cl = null ;
     DataSource jdbcBasedDataSourceRepository;
 
@@ -28,12 +27,12 @@ public class JdbcBasedClientRepository implements ClientRepository {
             statement.setString(2, cli.getNomClient());
             statement.setString(3, cli.getAdresseClient());
             statement.setString(4, cli.getTelephoneClient());
-            ok = statement.executeUpdate();
+            return statement.executeUpdate();
         }
         catch (Exception ex){
             ex.printStackTrace();
+            return 0;
         }
-        return ok;
     }
 
     public void detailClient(Client c) {
@@ -50,12 +49,12 @@ public class JdbcBasedClientRepository implements ClientRepository {
             Connection connection = jdbcBasedDataSourceRepository.createConnection();
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setInt(1, c.getIdClient());
-            ok = statement.executeUpdate();
+            return statement.executeUpdate();
         }
         catch (Exception ex){
             ex.printStackTrace();
+            return 0;
         }
-        return ok;
     }
 
     public int updateClient(Client c) {
@@ -67,12 +66,12 @@ public class JdbcBasedClientRepository implements ClientRepository {
             statement.setString(2, c.getAdresseClient());
             statement.setString(3, c.getTelephoneClient());
             statement.setInt(4, c.getIdClient());
-            ok = statement.executeUpdate();
+            return statement.executeUpdate();
         }
         catch (Exception ex){
             ex.printStackTrace();
+            return 0;
         }
-        return ok;
     }
 
     public Client getClientByNum(String numero) {

@@ -6,5 +6,7 @@ public interface DisplayEmploye {
     public void listerInfos();
     public void infoClient();
     public void listerOperation();
-    public Employe saisieEmploye();
+    public String saisielogin();
+    public String saisiePassword();
+    public Employe connexion();
 }

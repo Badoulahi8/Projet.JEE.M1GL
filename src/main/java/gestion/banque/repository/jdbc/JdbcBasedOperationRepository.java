@@ -12,7 +12,6 @@ import java.util.List;
 public class JdbcBasedOperationRepository implements OperationRepository {
     private DataSource jdbcBasedDataSourceRepository ;
     private ClientRepository clientRepository ;
-    private int ok = 0 ;
 
     public JdbcBasedOperationRepository() {
         jdbcBasedDataSourceRepository = new JDBCBasedDataSourceRepository();
@@ -28,12 +27,12 @@ public class JdbcBasedOperationRepository implements OperationRepository {
             statement.setString(1, op.getTypeOperation());
             statement.setString(2, op.getDateHeure());
             statement.setString(3, op.getClient().getNumeroClient());
-            ok = statement.executeUpdate();
+            return statement.executeUpdate();
         }
         catch (Exception ex){
             ex.printStackTrace();
+            return 0;
         }
-        return ok;
     }
 
     @Override

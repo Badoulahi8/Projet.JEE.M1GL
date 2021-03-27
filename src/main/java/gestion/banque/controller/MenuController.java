@@ -9,7 +9,6 @@ import gestion.banque.services.ScannerMenuService;
 public class MenuController {
     ScannerMenuService scannerMenuService ;
     String ok ;
-    ClientRepository clientRepository = new JdbcBasedClientRepository();
     ClientController clientController = new ClientController();
     EmployeController employeController = new EmployeController();
     public void process() {
@@ -20,11 +19,11 @@ public class MenuController {
             scannerMenuService.afficherMenuPricipal();
             ok = scannerMenuService.choixMenuPrincipal();
             if(ok.equals("c")){
-                employeController.process();
+                employeController.connexion();
             }
             else if (ok.equals("o")) {
                 clientController.process();
             }
-            } while (!ok.equals("q"));
+        } while (!ok.equals("q"));
     }
 }
