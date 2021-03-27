@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 16, 2021 at 01:09 AM
+-- Generation Time: Mar 27, 2021 at 11:14 AM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.1.1
 
@@ -66,7 +66,7 @@ CREATE TABLE `compte` (
 INSERT INTO `compte` (`idcompte`, `numerocompte`, `montantcompte`, `datecreation`, `numeroclient`) VALUES
 (14, 'CMP-NUM-0001', 2500, '2021/03/03', 'NUM-0001'),
 (15, 'CMP-NUM-0002', 5455, '2021/03/04', 'NUM-0002'),
-(16, 'CMP-NUM-0003', 4000, '2021/03/04', 'NUM-0003'),
+(16, 'CMP-NUM-0003', 6000, '2021/03/04', 'NUM-0003'),
 (17, 'CMP-NUM-0004', 0, '2021/03/13', 'NUM-0004'),
 (18, 'CMP-NUM-0005', 0, '2021/03/13', 'NUM-0005');
 
@@ -83,6 +83,13 @@ CREATE TABLE `employe` (
   `login` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `employe`
+--
+
+INSERT INTO `employe` (`idemploye`, `nomemploye`, `prenomemploye`, `login`, `password`) VALUES
+(1, 'Sall', 'Thierno', 'sall@gmail.com', 'passer');
 
 -- --------------------------------------------------------
 
@@ -103,7 +110,9 @@ CREATE TABLE `operation` (
 
 INSERT INTO `operation` (`idoperation`, `typeoperation`, `dateheureoperation`, `numeroclient`) VALUES
 (1, 'Depot', '2021/03/06', 'NUM-0002'),
-(2, 'Retraite', '2021/03/06', 'NUM-0002');
+(2, 'Retraite', '2021/03/06', 'NUM-0002'),
+(3, 'Depot', '2021/03/20 09:30:32', 'NUM-0003'),
+(4, 'Depot', '2021/03/27 09:44:21', 'NUM-0003');
 
 --
 -- Indexes for dumped tables
@@ -151,12 +160,12 @@ ALTER TABLE `compte`
 -- AUTO_INCREMENT for table `employe`
 --
 ALTER TABLE `employe`
-  MODIFY `idemploye` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idemploye` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `operation`
 --
 ALTER TABLE `operation`
-  MODIFY `idoperation` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idoperation` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
